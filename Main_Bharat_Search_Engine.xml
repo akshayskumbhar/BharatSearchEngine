@@ -1,0 +1,1606 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.title/></title>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+
+  <b:skin><![CDATA[
+    /* -----------------------------------------------
+    Blogger Custom Search Engine UI
+    Designed for: High-Performance IT Portfolio
+    ----------------------------------------------- */
+    
+    /* Variable Definitions for Theme Compatibility */
+    /* <Variable name="body.background" description="Body Background" type="color" default="#f8f9fa"/> */
+    /* <Variable name="key.color" description="Primary Accent" type="color" default="#4285f4"/> */
+
+    /* RESET & CORE STYLES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Google Sans', Roboto, Arial, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.5s ease;
+    }
+
+	]]></b:skin>
+
+  <style>
+    /* CUSTOM BACKGROUND THEME */
+    :root {
+      
+      --bg-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1');
+      --accent: #4285f4;
+    }
+    .theme-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-image) no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+      filter: brightness(0.8);
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes logoEntry {
+      0% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes searchBarSlide {
+      0% { width: 0%; opacity: 0; }
+      100% { width: 100%; opacity: 1; }
+    }
+
+    @keyframes glowEffect {
+      0% { box-shadow: 0 0 5px rgba(66, 133, 244, 0.2); }
+      50% { box-shadow: 0 0 20px rgba(66, 133, 244, 0.5); }
+      100% { box-shadow: 0 0 5px rgba(66, 133, 244, 0.2); }
+    }
+
+    @keyframes cardPop {
+      from { transform: scale(0.9) translateY(30px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    /* SEARCH TERMINAL UI */
+    .search-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Shift layout upwards after search */
+    body.searching .search-wrapper {
+      justify-content: flex-start;
+      padding-top: 40px;
+      flex: 0;
+    }
+
+    /* CENTERED LOGO STYLING */
+    .brand-logo {
+      font-size: 84px;
+      font-weight: 700;
+      letter-spacing: -3px;
+      margin-bottom: 35px;
+      cursor: pointer;
+      animation: logoEntry 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+    }
+
+    .brand-logo .char-1 { color: #4285F4; }
+    .brand-logo .char-2 { color: #EA4335; }
+    .brand-logo .char-3 { color: #FBBC05; }
+    .brand-logo .char-4 { color: #4285F4; }
+    .brand-logo .char-5 { color: #34A853; }
+    .brand-logo .char-6 { color: #EA4335; }
+
+    /* THE SEARCH BAR CONTAINER */
+    .search-bar-outer {
+      width: 100%;
+      max-width: 584px;
+      position: relative;
+      animation: searchBarSlide 1s ease forwards;
+    }
+
+    .search-field-container {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      padding: 5px 8px 5px 20px;
+      height: 46px;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+
+    .search-field-container:hover {
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+      border-color: rgba(223,225,229,0);
+    }
+
+    .search-field-container:focus-within {
+      box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+      border-color: rgba(223,225,229,0);
+    }
+     
+    .search-field-container input {
+      flex: 1;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
+      color: rgba(0,0,0,0.87);
+      word-wrap: break-word;
+      outline: none;
+      display: flex;
+      font-size: 16px;
+      height: 34px;
+    }
+
+    .search-field-container .search-icon {
+      padding-right: 13px;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-field-container .search-icon svg {
+      fill: #9aa0a6;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* CENTERED BUTTONS BELOW SEARCH */
+    .button-group {
+      padding-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .button-group button {
+      background-color: #f8f9fa;
+      border: 1px solid #f8f9fa;
+      border-radius: 4px;
+      color: #3c4043;
+      font-family: Roboto, arial, sans-serif;
+      font-size: 14px;
+      margin: 11px 4px;
+      padding: 0 16px;
+      line-height: 27px;
+      height: 36px;
+      min-width: 54px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    .button-group button:hover {
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      background-color: #f8f9fa;
+      border: 1px solid #dadce0;
+      color: #202124;
+      transform: translateY(-1px);
+    }
+
+    /* TOP NAVIGATION LINKS */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 13px;
+      color: rgba(0,0,0,0.87);
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: inherit;
+      padding: 5px;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-icon {
+      width: 32px;
+      height: 32px;
+      background: #4285f4;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* MOBILE RESPONSIVENESS FOR CONTROLS */
+    @media (max-width: 600px) {
+      .brand-logo { font-size: 50px; margin-bottom: 20px; }
+      .search-bar-outer { width: 95%; }
+      .button-group { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    /* RESULTS GRID WRAPPER */
+    #results-main {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: none; /* Hidden until search is performed */
+    }
+
+    body.searching #results-main {
+      display: block;
+      animation: fadeInUp 0.8s ease;
+    }
+      /* GLASSMORPHISM CARD DESIGN */
+    .result-item {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      animation: cardPop 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* ATTRACTIVE HOVER EFFECTS FOR CARDS */
+    .result-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #4285f4;
+    }
+
+    .result-link {
+      font-size: 20px;
+      color: #1a0dab;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .result-link:hover {
+      text-decoration: underline;
+    }
+
+    .result-snippet {
+      font-size: 14px;
+      color: #4d5156;
+      line-height: 1.58;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .result-url {
+      font-size: 12px;
+      color: #202124;
+      padding-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+
+    /* SEARCH TERMINAL ANIMATIONS */
+    .search-terminal-active {
+      border: 2px solid transparent;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(to right, #4285f4, #ea4335, #fbbc05, #34a853);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+      animation: glowEffect 3s infinite;
+    }
+
+    /* NAVIGATIONS ANIMATION */
+    .nav-link-item {
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s;
+    }
+
+    .nav-link-item::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #4285f4;
+      transition: width 0.3s;
+    }
+
+    .nav-link-item:hover::after {
+      width: 100%;
+    }
+
+    /* LOADING SPINNER FOR SEARCH */
+    #search-loader {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #4285f4;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Closing the Style tag for now - more CSS in next part if needed */
+  </style>
+</head>
+<body>
+  <div class='theme-overlay' id='bgOverlay'></div>
+
+  <nav class='top-nav'>
+    <a class='nav-link-item' href='https://www.blogger.com'>Blogger</a>
+    <a class='nav-link-item' href='#'>Images</a>
+    
+    <div style='cursor:pointer; padding:5px;'>
+      <svg height='24' viewBox='0 0 24 24' width='24'>
+        <path d='M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z' fill='#5f6368'/>
+      </svg>
+    </div>
+
+    <div class='profile-icon' title='Search Engine User'>
+		<b:eval expr='data:blog.title.substring(0, 1)'/>
+    </div>
+  </nav>
+
+  <div class='search-wrapper' id='mainTerminal'>
+    
+    <div class='brand-logo' id='logoContainer' onclick='resetSearch()'>
+      <span class='char-1'>N</span>
+      <span class='char-2'>e</span>
+      <span class='char-3'>t</span>
+      <span class='char-4'>Q</span>
+      <span class='char-5'>u</span>
+      <span class='char-6'>e</span>
+    </div>
+
+    <div class='search-bar-outer'>
+      <div class='search-field-container' id='searchBoxUI'>
+        <div class='search-icon'>
+          <svg focusable='false' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/xlink'>
+            <path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/>
+          </svg>
+        </div>
+        
+        <input autocomplete='off' id='searchInput' name='q' placeholder='Search the web or type a URL' type='text'/>
+        
+        <div style='cursor:pointer; padding: 0 10px;'>
+          <svg height='24' viewBox='0 0 24 24' width='24'>
+            <path d='M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z' fill='#4285f4'/>
+            <path d='M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z' fill='#ea4335'/>
+          </svg>
+        </div>
+      </div>
+      <div class='button-group' id='actionButtons'>
+        <button id='btnSearch' onclick='executeSearch()'>NetQuest Search</button>
+        <button id='btnLucky' onclick='luckySearch()'>I&#39;m Feeling Lucky</button>
+      </div>
+    </div> <div id='search-loader'></div>
+  </div> <div id='results-main'>
+    <div id='search-stats' style='color:#70757a; font-size:14px; margin-bottom:20px;'></div>
+    <div id='results-container'>
+      </div>
+  </div>
+
+  <footer id='pageFooter'>
+    <div style='border-bottom: 1px solid #dadce0; padding: 15px 30px; text-align: left; background: #f2f2f2; color: rgba(0,0,0,0.54);'>
+      India
+    </div>
+    <div style='display: flex; flex-wrap: wrap; justify-content: space-between; padding: 15px 30px; background: #f2f2f2;'>
+      <div style='display: flex; gap: 25px;'>
+        <span>About</span>
+        <span>Advertising</span>
+        <span>Business</span>
+      </div>
+      <div style='display: flex; gap: 25px;'>
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>Settings</span>
+      </div>
+    </div>
+  </footer>
+
+  <b:section id='main-data-source' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
+      <b:includable id='main'>
+
+ <script type='text/javascript'>
+// <![CDATA[
+          
+  // GLOBAL DATA STORE
+  var engineDatabase = [];
+
+  /* DATA EXTRACTION LOOP */
+  <b:loop values='data:posts' var='post'>
+    engineDatabase.push({
+      title: "<data:post.title/>",
+      url: "<data:post.url/>",
+      snippet: "<data:post.snippet/>",
+      author: "<data:post.author/>",
+      timestamp: "<data:post.timestamp/>"
+    });
+  </b:loop>
+
+  // UI ELEMENT REFERENCES
+  var searchInput = document.getElementById('searchInput');
+  var searchBoxUI = document.getElementById('searchBoxUI');
+  var mainTerminal = document.getElementById('mainTerminal');
+  var resultsMain = document.getElementById('results-main');
+  var resultsContainer = document.getElementById('results-container');
+  var searchStats = document.getElementById('search-stats');
+  var loader = document.getElementById('search-loader');
+
+  /* CORE SEARCH EXECUTION */
+  function executeSearch() {
+    var query = searchInput.value.toLowerCase().trim();
+    if (query === "") {
+      searchInput.focus();
+      return;
+    }
+    document.body.classList.add('searching');
+    loader.style.display = 'block';
+    resultsContainer.innerHTML = '';
+    searchStats.innerHTML = 'Searching for "' + query + '"...';
+
+    setTimeout(function() {
+      performMatch(query);
+    }, 600);
+  }
+
+  /* PERFORM MATCH */
+  function performMatch(query) {
+    var startTime = performance.now();
+    var matches = [];
+
+    engineDatabase.forEach(function(post) {
+      if (post.title.toLowerCase().indexOf(query) !== -1 || 
+          post.snippet.toLowerCase().indexOf(query) !== -1) {
+        matches.push(post);
+      }
+    });
+
+    var endTime = performance.now();
+    var searchTime = ((endTime - startTime) / 1000).toFixed(2);
+    loader.style.display = 'none';
+            
+    if (matches.length > 0) {
+      searchStats.innerHTML = 'About ' + matches.length + ' results (' + searchTime + ' seconds)';
+      matches.forEach(function(item, index) {
+        var delay = index * 0.1;
+        resultsContainer.innerHTML += `
+          <div class="result-item" style="animation-delay: ${delay}s">
+            <span class="result-url">${item.url}</span>
+            <a class="result-link" href="${item.url}">${item.title}</a>
+            <p class="result-snippet">${item.snippet}</p>
+            <div style="margin-top:10px; font-size:12px; color:#70757a;">
+              Published by ${item.author} • ${item.timestamp}
+            </div>
+          </div>
+        `;
+      });
+    } else {
+      renderNoResults(query);
+    }
+  }
+
+  /* NO RESULTS UI */
+  function renderNoResults(query) {
+    resultsContainer.innerHTML = `
+      <div style="padding: 20px; color: #202124;">
+        <p>Your search - <b>${query}</b> - did not match any documents.</p>
+        <p style="margin-top:15px;">Suggestions:</p>
+        <ul style="margin-left:40px; margin-top:10px; line-height:1.8;">
+          <li>Make sure that all words are spelled correctly.</li>
+          <li>Try different keywords.</li>
+          <li>Try more general keywords.</li>
+        </ul>
+      </div>
+    `;
+  }
+
+  /* I'M FEELING LUCKY */
+  function luckySearch() {
+    var query = searchInput.value.toLowerCase().trim();
+    if (query === "") {
+      if (engineDatabase.length > 0) {
+        window.location.href = engineDatabase[0].url;
+      }
+      return;
+    }
+
+    var match = null;
+    // The '<' below is now safe because of the CDATA wrapper
+    for (var i = 0; i < engineDatabase.length; i++) {
+      if (engineDatabase[i].title.toLowerCase().indexOf(query) !== -1) {
+        match = engineDatabase[i];
+        break; 
+      }
+    }
+    
+    if (match) {
+      window.location.href = match.url;
+    } else {
+      executeSearch();
+    }
+  }
+
+            if (match) {
+              window.location.href = match.url;
+            } else {
+              executeSearch(); // Fallback to standard search if no direct match
+            }
+          }
+
+          /* RESET SEARCH 
+             Returns the UI to the centered 'Google Home' look
+          */
+          function resetSearch() {
+            document.body.classList.remove('searching');
+            resultsMain.style.display = 'none';
+            resultsContainer.innerHTML = '';
+            searchStats.innerHTML = '';
+            searchInput.value = '';
+            loader.style.display = 'none';
+            
+            // Re-center the layout with a smooth transition
+            mainTerminal.style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+
+          /* KEYBOARD ACCESSIBILITY 
+             Ensure "Enter" works for both search and lucky
+          */
+          searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              executeSearch();
+            }
+          });
+          /* VOICE SEARCH SIMULATION
+             Adds a high-tech animation when the mic icon is clicked
+          */
+          function simulateVoiceSearch() {
+            searchInput.placeholder = "Listening...";
+            searchBoxUI.classList.add('search-terminal-active');
+            
+            // In a real IT project, you would use the Web Speech API here
+            setTimeout(function() {
+              searchInput.placeholder = "Search the web or type a URL";
+              searchBoxUI.classList.remove('search-terminal-active');
+              alert("Voice search is active. Please speak now (Simulation).");
+            }, 2000);
+          }
+
+          // INITIALIZATION
+          window.onload = function() {
+            console.log("NetQuest Engine Loaded: " + engineDatabase.length + " posts indexed.");
+            // Add focus effect to search bar on load
+            searchInput.focus();
+          };
+
+          // ]]>
+        </script>
+
+  <footer class='main-footer-wrapper' id='footer-content'>
+    <div class='footer-inner'>
+        
+
+  <div id='feedback-trigger' style='position:fixed; bottom:20px; right:20px; cursor:pointer; opacity:0.7; transition:0.3s;'>
+    <svg fill='#5f6368' height='24' viewBox='0 0 24 24' width='24'>
+      <path d='M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z'/>
+    </svg>
+  </div>
+  <div id='trending-container' style='margin-top: 25px; text-align: center; animation: fadeInUp 1.2s ease;'>
+      <span style='color: #70757a; font-size: 14px;'>Trending searches: </span>
+      <div id='trending-links' style='display: inline-block; margin-left: 10px;'>
+        <a href='#' onclick='fillSearch("Data Science Internships")' style='color: #1a0dab; text-decoration: none; font-size: 14px; margin-right: 15px;'>Data Science Internships</a>
+        <a href='#' onclick='fillSearch("Electronics Projects")' style='color: #1a0dab; text-decoration: none; font-size: 14px; margin-right: 15px;'>Electronics Projects</a>
+        <a href='#' onclick='fillSearch("Pune IT Jobs")' style='color: #1a0dab; text-decoration: none; font-size: 14px;'>Pune IT Jobs</a>
+      </div>
+    </div>
+
+    <div id='language-bar' style='margin-top: 20px; font-size: 13px; color: #3c4043;'>
+      NetQuest offered in: 
+      <a href='#' onclick='switchLanguage("mr")' style='color: #1a0dab; text-decoration: none; margin-left: 8px;'>मराठी</a>
+      <a href='#' onclick='switchLanguage("en")' style='color: #1a0dab; text-decoration: none; margin-left: 8px;'>English</a>
+    </div>
+  <script type='text/javascript'>
+    // <![CDATA[
+    
+    /* FUNCTION: Fill Search 
+       Quickly populates the search bar when a trending link is clicked
+    */
+    function fillSearch(term) {
+      document.getElementById('searchInput').value = term;
+      executeSearch();
+    }
+
+    /* FUNCTION: Switch Language
+       Dynamically updates UI text to Marathi or English
+    */
+    function switchLanguage(lang) {
+      const translations = {
+        'mr': {
+          'btnSearch': 'NetQuest शोध',
+          'btnLucky': 'मला नशीबवान वाटतेय',
+          'placeholder': 'वेबवर शोधा किंवा URL टाइप करा',
+          'offeredIn': 'NetQuest यामध्ये उपलब्ध आहे: '
+        },
+        'en': {
+          'btnSearch': 'NetQuest Search',
+          'btnLucky': 'I\'m Feeling Lucky',
+          'placeholder': 'Search the web or type a URL',
+          'offeredIn': 'NetQuest offered in: '
+        }
+      };
+
+      document.getElementById('btnSearch').innerText = translations[lang].btnSearch;
+      document.getElementById('btnLucky').innerText = translations[lang].btnLucky;
+      document.getElementById('searchInput').placeholder = translations[lang].placeholder;
+      // Update other text nodes as needed
+    }
+    
+    // ]]>
+  </script>
+  <div id='theme-settings' style='position: fixed; bottom: 80px; left: 20px; z-index: 100;'>
+      <button onclick='toggleDarkMode()' style='background:rgba(255,255,255,0.8); border:1px solid #dadce0; border-radius:20px; padding:8px 15px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:12px; transition:0.3s;'>
+        <svg height='18' viewBox='0 0 24 24' width='18' fill='#5f6368'>
+          <path d='M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z'/>
+        </svg>
+        <span id='mode-text'>Dark Mode</span>
+      </button>
+
+      <button onclick='triggerBgUpload()' style='margin-top:10px; background:rgba(255,255,255,0.8); border:1px solid #dadce0; border-radius:20px; padding:8px 15px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:12px; transition:0.3s;'>
+        <svg height='18' viewBox='0 0 24 24' width='18' fill='#5f6368'>
+          <path d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/>
+        </svg>
+        <span>Customize Background</span>
+      </button>
+      <input type='file' id='bgInput' style='display:none;' accept='image/*' onchange='updateBackground(this)'/>
+    </div>
+
+  <script type='text/javascript'>
+    // <![CDATA[
+    
+    /* FUNCTION: Toggle Dark Mode
+       Applies dark theme classes and updates UI elements
+    */
+    function toggleDarkMode() {
+      const isDark = document.body.classList.toggle('dark-theme');
+      document.getElementById('mode-text').innerText = isDark ? 'Light Mode' : 'Dark Mode';
+      
+      // Update persistent style via CSS Variables
+      if(isDark) {
+        document.documentElement.style.setProperty('--glass', 'rgba(32, 33, 36, 0.95)');
+        document.documentElement.style.setProperty('--text-primary', '#e8eaed');
+      } else {
+        document.documentElement.style.setProperty('--glass', 'rgba(255, 255, 255, 0.95)');
+        document.documentElement.style.setProperty('--text-primary', '#202124');
+      }
+    }
+
+    /* FUNCTION: Background Customization
+       Allows users to upload their own gallery image as a theme
+    */
+    function triggerBgUpload() {
+      document.getElementById('bgInput').click();
+    }
+
+    function updateBackground(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('bgOverlay').style.backgroundImage = "url('" + e.target.result + "')";
+          document.getElementById('bgOverlay').style.filter = "brightness(0.6)"; // Dim image for better text contrast
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    
+    // ]]>
+  </script>
+
+  <style>
+    body.dark-theme {
+      background-color: #202124;
+      color: #e8eaed;
+    }
+    body.dark-theme .search-field-container {
+      background: #303134;
+      border-color: #5f6368;
+    }
+    body.dark-theme .search-field-container input { color: #e8eaed; }
+    body.dark-theme .button-group button {
+      background-color: #303134;
+      border-color: #303134;
+      color: #e8eaed;
+    }
+    body.dark-theme .result-item {
+      background: rgba(48, 49, 52, 0.8);
+      border-color: #5f6368;
+    }
+    body.dark-theme .result-link { color: #8ab4f8; }
+    body.dark-theme .result-snippet { color: #bdc1c6; }
+  </style>
+  <div id='search-tabs' style='display: none; width: 100%; max-width: 1200px; margin: 20px auto 0; padding: 0 20px; border-bottom: 1px solid #dadce0;'>
+      <div style='display: flex; gap: 20px; font-size: 14px; color: #70757a;'>
+        <div class='tab-item active' onclick='filterResults("all")' style='padding: 10px 5px; cursor: pointer; border-bottom: 3px solid #4285f4; color: #4285f4;'>
+          <svg style='vertical-align: middle; margin-right: 5px;' width='16' height='16' viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' fill='currentColor'/></svg>
+          All
+        </div>
+        <div class='tab-item' onclick='filterResults("projects")' style='padding: 10px 5px; cursor: pointer;'>Projects</div>
+        <div class='tab-item' onclick='filterResults("internships")' style='padding: 10px 5px; cursor: pointer;'>Internships</div>
+        <div class='tab-item' onclick='filterResults("code")' style='padding: 10px 5px; cursor: pointer;'>Code</div>
+      </div>
+    </div>
+
+  <script type='text/javascript'>
+    // <![CDATA[
+    
+    /* FUNCTION: Filter Results
+       Allows the user to narrow down posts by category (Projects/Internships)
+    */
+    function filterResults(category) {
+      // Update UI Tabs
+      const tabs = document.querySelectorAll('.tab-item');
+      tabs.forEach(tab => {
+        tab.style.color = '#70757a';
+        tab.style.borderBottom = 'none';
+        if(tab.innerText.toLowerCase() === category) {
+           tab.style.color = '#4285f4';
+           tab.style.borderBottom = '3px solid #4285f4';
+        }
+      });
+
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      
+      // Filter the existing results based on keywords
+      const filtered = engineDatabase.filter(post => {
+        const matchesQuery = post.title.toLowerCase().indexOf(query) !== -1;
+        if(category === 'all') return matchesQuery;
+        return matchesQuery && post.snippet.toLowerCase().indexOf(category.slice(0, -1)) !== -1;
+      });
+
+      renderFilteredCards(filtered);
+    }
+
+    function renderFilteredCards(matches) {
+      const container = document.getElementById('results-container');
+      container.innerHTML = '';
+      matches.forEach((item, index) => {
+        container.innerHTML += `
+          <div class="result-item" style="animation-delay: ${index * 0.05}s; opacity: 1; transform: translateY(0);">
+            <span class="result-url">${item.url}</span>
+            <a class="result-link" href="${item.url}">${item.title}</a>
+            <p class="result-snippet">${item.snippet}</p>
+          </div>
+        `;
+      });
+    }
+
+    // Modify executeSearch to show tabs
+    const originalExecuteSearch = executeSearch;
+    executeSearch = function() {
+      originalExecuteSearch();
+      document.getElementById('search-tabs').style.display = 'block';
+    }
+    
+    // ]]>
+  </script>
+  <style>
+      .suggestions-box {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 0 0 24px 24px;
+        box-shadow: 0 4px 6px rgba(32,33,36,0.28);
+        border: 1px solid #dfe1e5;
+        border-top: none;
+        display: none;
+        z-index: 1000;
+        overflow: hidden;
+        padding-bottom: 10px;
+      }
+      .suggestion-item {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 15px;
+        color: #202124;
+      }
+      .suggestion-item:hover { background: #f1f3f4; }
+      .suggestion-icon {
+        margin-right: 15px;
+        fill: #9aa0a6;
+      }
+      body.dark-theme .suggestions-box {
+        background: #303134;
+        border-color: #5f6368;
+      }
+      body.dark-theme .suggestion-item { color: #e8eaed; }
+      body.dark-theme .suggestion-item:hover { background: #3c4043; }
+    </style>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      /* PRE-DEFINED SUGGESTIONS 
+         Tailored to your background in Electronics, Data Science, and your projects.
+      */
+      const smartKeywords = [
+        "Data Science Internships",
+        "Electronics and Telecommunication Projects",
+        "Jay Bhavani Caterers Promo",
+        "Shrinath Rasvanti Gruh Videos",
+        "Pune IT Domain Vacancies",
+        "B.Tech Portfolio",
+        "Python for Data Analysis"
+      ];
+
+      // Add the box to the UI dynamically
+      const sBox = document.createElement('div');
+      sBox.className = 'suggestions-box';
+      sBox.id = 'suggestionsBox';
+      document.querySelector('.search-field-container').parentNode.appendChild(sBox);
+
+      searchInput.addEventListener('input', function() {
+        const val = this.value.toLowerCase();
+        sBox.innerHTML = '';
+        
+        if (val.length < 1) {
+          sBox.style.display = 'none';
+          searchBoxUI.style.borderRadius = '24px';
+          return;
+        }
+
+        const matches = smartKeywords.filter(k => k.toLowerCase().includes(val));
+        
+        if (matches.length > 0) {
+          sBox.style.display = 'block';
+          searchBoxUI.style.borderRadius = '24px 24px 0 0';
+          
+          matches.forEach(match => {
+            const item = document.createElement('div');
+            item.className = 'suggestion-item';
+            item.innerHTML = `
+              <svg class="suggestion-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <span>${match}</span>
+            `;
+            item.onclick = () => {
+              searchInput.value = match;
+              sBox.style.display = 'none';
+              executeSearch();
+            };
+            sBox.appendChild(item);
+          });
+        } else {
+          sBox.style.display = 'none';
+        }
+      });
+
+      // Close suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!document.querySelector('.search-bar-outer').contains(e.target)) {
+          sBox.style.display = 'none';
+          searchBoxUI.style.borderRadius = '24px';
+        }
+      });
+      
+      // ]]>
+    </script>
+    <style>
+      .media-results-row {
+        margin: 20px 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #dfe1e5;
+        overflow-x: auto;
+        display: none; /* Shown only for relevant searches */
+        white-space: nowrap;
+        scrollbar-width: none; /* Hide scrollbar for clean look */
+      }
+      .media-results-row::-webkit-scrollbar { display: none; }
+      
+      .media-card {
+        display: inline-block;
+        width: 250px;
+        margin-right: 15px;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #dfe1e5;
+        vertical-align: top;
+        transition: 0.3s;
+      }
+      .media-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+      
+      .media-thumb {
+        width: 100%;
+        height: 140px;
+        background: #202124;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .play-icon {
+        position: absolute;
+        fill: white;
+        opacity: 0.8;
+      }
+      .media-info { padding: 10px; white-space: normal; }
+      .media-title { font-size: 14px; font-weight: 500; color: #1a0dab; }
+      
+      body.dark-theme .media-card { background: #303134; border-color: #5f6368; }
+      body.dark-theme .media-title { color: #8ab4f8; }
+    </style>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      /* SPECIAL MEDIA DATABASE 
+         Showcases your promotional video projects
+      */
+      const mediaProjects = [
+        {
+          title: "Jay Bhavani Caterers Promo",
+          thumbColor: "#ea4335",
+          link: "#",
+          category: "caterers"
+        },
+        {
+          title: "Shrinath Rasvanti Gruh Video",
+          thumbColor: "#fbbc05",
+          link: "#",
+          category: "rasvanti"
+        }
+      ];
+
+      function showMediaCarousel(query) {
+        const row = document.createElement('div');
+        row.className = 'media-results-row';
+        row.id = 'mediaCarousel';
+        
+        // Check if query matches your business projects
+        const isCatering = query.includes("caterer") || query.includes("bhavani");
+        const isRasvanti = query.includes("rasvanti") || query.includes("shrinath");
+
+        if (isCatering || isRasvanti) {
+          row.style.display = 'block';
+          let html = '<h3 style="font-size:18px; margin-bottom:15px; color:#202124;">Related Videos</h3>';
+          
+          mediaProjects.forEach(proj => {
+            html += `
+              <div class="media-card" onclick="window.location.href='${proj.link}'">
+                <div class="media-thumb" style="background-color: ${proj.thumbColor}">
+                  <svg class="play-icon" width="48" height="48" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="media-info">
+                  <div class="media-title">${proj.title}</div>
+                  <div style="font-size:12px; color:#70757a; margin-top:5px;">YouTube • NetQuest Video</div>
+                </div>
+              </div>
+            `;
+          });
+          row.innerHTML = html;
+          document.getElementById('results-container').prepend(row);
+        }
+      }
+
+      // Hook into the main search function
+      const searchWithMedia = executeSearch;
+      executeSearch = function() {
+        searchWithMedia();
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        // Delay carousel to match card animations
+        setTimeout(() => showMediaCarousel(query), 300);
+      };
+
+      // ]]>
+    </script>
+    <style>
+      .knowledge-panel {
+        width: 360px;
+        border: 1px solid #dfe1e5;
+        border-radius: 8px;
+        padding: 20px;
+        margin-left: 30px;
+        float: right;
+        background: #fff;
+        display: none; /* Only shows on relevant queries */
+        animation: fadeIn 1s ease;
+      }
+      .kp-title { font-size: 28px; margin-bottom: 5px; color: #202124; }
+      .kp-subtitle { font-size: 14px; color: #70757a; margin-bottom: 15px; }
+      .kp-img { width: 100%; border-radius: 8px; margin-bottom: 15px; border: 1px solid #f1f3f4; }
+      .kp-section { border-top: 1px solid #dfe1e5; padding-top: 15px; margin-top: 15px; }
+      .kp-info { font-size: 14px; line-height: 1.6; color: #3c4043; }
+      .kp-label { font-weight: bold; color: #202124; }
+      
+      body.dark-theme .knowledge-panel { background: #303134; border-color: #5f6368; }
+      body.dark-theme .kp-title, body.dark-theme .kp-label { color: #e8eaed; }
+      body.dark-theme .kp-info { color: #bdc1c6; }
+
+      /* Clearfix for result alignment */
+      #results-container::after { content: ""; clear: both; display: table; }
+
+      @media (max-width: 900px) {
+        .knowledge-panel { float: none; width: 100%; margin: 20px 0; }
+      }
+    </style>
+
+    <div class='knowledge-panel' id='knowledgePanel'>
+      <div class='kp-title'>Professional Profile</div>
+      <div class='kp-subtitle'>IT Specialist &amp; Electronics Engineer</div>
+      
+      <div class='kp-img' style='height: 200px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; font-size: 50px; color: #dadce0;'>👤</div>
+      
+      <div class='kp-info'>
+        B.Tech graduate in Electronics and Telecommunication with a focus on Data Science and Software Development.
+      </div>
+      
+      <div class='kp-section'>
+        <div class='kp-info'><span class='kp-label'>Education:</span> B.Tech (Electronics &amp; Telecommunication)</div>
+        <div class='kp-info'><span class='kp-label'>Experience:</span> 2 Data Science Internships</div>
+        <div class='kp-info'><span class='kp-label'>Location:</span> Pune, Maharashtra</div>
+        <div class='kp-info'><span class='kp-label'>Interests:</span> Marathi Language, Video Editing, Software</div>
+      </div>
+      
+      <div class='kp-section'>
+        <div class='kp-label'>Professional Projects</div>
+        <div style='display: flex; gap: 10px; margin-top: 10px;'>
+          <div style='text-align: center; flex: 1;'>
+             <div style='background: #ea4335; height: 40px; border-radius: 4px;'></div>
+             <span style='font-size: 11px;'>Jay Bhavani</span>
+          </div>
+          <div style='text-align: center; flex: 1;'>
+             <div style='background: #fbbc05; height: 40px; border-radius: 4px;'></div>
+             <span style='font-size: 11px;'>Shrinath Ras</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      function toggleKnowledgePanel(query) {
+        const kp = document.getElementById('knowledgePanel');
+        // Show panel if query matches your profile or skills
+        const triggers = ['b.tech', 'electronics', 'internship', 'data science', 'portfolio', 'pune'];
+        const shouldShow = triggers.some(t => query.includes(t));
+        
+        kp.style.display = shouldShow ? 'block' : 'none';
+      }
+
+      // Add to main search flow
+      const searchWithKP = executeSearch;
+      executeSearch = function() {
+        searchWithKP();
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        toggleKnowledgePanel(query);
+      };
+      // ]]>
+    </script>
+    <style>
+      .resume-btn {
+        display: block;
+        width: 100%;
+        background: #4285f4;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 15px;
+        transition: 0.3s;
+      }
+      .resume-btn:hover { background: #357ae8; box-shadow: 0 2px 8px rgba(66,133,244,0.4); }
+
+      .settings-menu {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        border: 1px solid #dfe1e5;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        display: none;
+        z-index: 2000;
+      }
+      .shortcut-key {
+        background: #f1f3f4;
+        border: 1px solid #dadce0;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+      body.dark-theme .settings-menu { background: #303134; border-color: #5f6368; color: #e8eaed; }
+    </style>
+
+    <div class='settings-menu' id='settingsMenu'>
+      <div style='font-weight:bold; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;'>Keyboard Shortcuts</div>
+      <div style='font-size:13px; line-height:2;'>
+        <span class='shortcut-key'>/</span> Focus Search<br/>
+        <span class='shortcut-key'>Esc</span> Reset UI<br/>
+        <span class='shortcut-key'>?</span> Toggle Help
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      // Inject Resume Button into Knowledge Panel dynamically
+      window.addEventListener('DOMContentLoaded', function() {
+        const kpSection = document.getElementById('knowledgePanel');
+        const resumeLink = document.createElement('a');
+        resumeLink.className = 'resume-btn';
+        resumeLink.href = '#'; // Replace with your Google Drive resume link
+        resumeLink.innerText = 'Download Full Resume (PDF)';
+        kpSection.appendChild(resumeLink);
+      });
+
+      // GLOBAL KEYBOARD LISTENERS
+      document.addEventListener('keydown', function(e) {
+        // Focus search bar when '/' is pressed
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+        }
+        // Reset search on 'Escape'
+        if (e.key === 'Escape') {
+          resetSearch();
+          document.getElementById('settingsMenu').style.display = 'none';
+        }
+        // Toggle Help on '?'
+        if (e.key === '?' && e.shiftKey) {
+          const menu = document.getElementById('settingsMenu');
+          menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+      });
+
+      // ]]>
+    </script>
+    <style>
+      .history-container {
+        width: 100%;
+        max-width: 584px;
+        margin-top: 10px;
+        text-align: left;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+      .history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        color: #70757a;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .history-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 10px;
+      }
+      .history-item {
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid #dfe1e5;
+        border-radius: 16px;
+        padding: 5px 12px;
+        font-size: 13px;
+        color: #3c4043;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: 0.2s;
+      }
+      .history-item:hover {
+        background: #f1f3f4;
+        border-color: #dadce0;
+      }
+      .clear-history {
+        cursor: pointer;
+        color: #4285f4;
+        font-weight: bold;
+      }
+      body.dark-theme .history-item {
+        background: #303134;
+        border-color: #5f6368;
+        color: #e8eaed;
+      }
+    </style>
+
+    <div class='history-container' id='historyBox'>
+      <div class='history-header'>
+        <span>Recent Searches</span>
+        <span class='clear-history' onclick='clearHistory()'>Clear All</span>
+      </div>
+      <div class='history-list' id='historyList'></div>
+    </div>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      const MAX_HISTORY = 6;
+
+      function saveToHistory(query) {
+        let history = JSON.parse(localStorage.getItem('netquest_history') || '[]');
+        // Remove duplicate if it exists
+        history = history.filter(item => item !== query);
+        // Add to front
+        history.unshift(query);
+        // Trim to max limit
+        if (history.length > MAX_HISTORY) history.pop();
+        
+        localStorage.setItem('netquest_history', JSON.stringify(history));
+        displayHistory();
+      }
+
+      function displayHistory() {
+        const history = JSON.parse(localStorage.getItem('netquest_history') || '[]');
+        const list = document.getElementById('historyList');
+        const container = document.getElementById('historyBox');
+
+        if (history.length > 0 && !document.body.classList.contains('searching')) {
+          container.style.display = 'block';
+          list.innerHTML = '';
+          history.forEach(term => {
+            const item = document.createElement('div');
+            item.className = 'history-item';
+            item.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg> ${term}`;
+            item.onclick = () => {
+              searchInput.value = term;
+              executeSearch();
+            };
+            list.appendChild(item);
+          });
+        } else {
+          container.style.display = 'none';
+        }
+      }
+
+      function clearHistory() {
+        localStorage.removeItem('netquest_history');
+        displayHistory();
+      }
+
+      // Update executeSearch to save history
+      const originalSearchWithHistory = executeSearch;
+      executeSearch = function() {
+        const query = searchInput.value.trim();
+        if (query !== "") saveToHistory(query);
+        originalSearchWithHistory();
+        document.getElementById('historyBox').style.display = 'none';
+      };
+
+      // Initialize history on load
+      window.addEventListener('load', displayHistory);
+      
+      // ]]>
+    </script>
+    <style>
+      .preview-box {
+        position: fixed;
+        display: none;
+        width: 300px;
+        background: #fff;
+        border: 1px solid #dfe1e5;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        z-index: 3000;
+        overflow: hidden;
+        pointer-events: none; /* Prevents interference with cursor */
+        animation: cardPop 0.3s ease-out;
+      }
+      .preview-img {
+        width: 100%;
+        height: 180px;
+        background: #f8f9fa;
+        object-fit: cover;
+      }
+      .preview-details {
+        padding: 12px;
+        font-size: 13px;
+        color: #3c4043;
+      }
+      .preview-label {
+        display: inline-block;
+        background: #e8f0fe;
+        color: #1967d2;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+      body.dark-theme .preview-box {
+        background: #303134;
+        border-color: #5f6368;
+        color: #e8eaed;
+      }
+    </style>
+
+    <div class='preview-box' id='imagePreview'>
+      <img class='preview-img' id='previewImg' src=''/>
+      <div class='preview-details'>
+        <div id='previewTitle' style='font-weight:bold; margin-bottom:4px;'>Preview</div>
+        <div id='previewLabel' class='preview-label'>Project</div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      /* PREVIEW DATABASE 
+         Map your certificates and projects to images
+      */
+      const previewAssets = {
+        "data science": "https://images.unsplash.com/photo-1551288049-bbda4e23215c?w=400",
+        "electronics": "https://images.unsplash.com/photo-1517077304055-6e89abf0980d?w=400",
+        "internship": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400",
+        "b.tech": "https://images.unsplash.com/photo-1523050335456-adaba1710640?w=400"
+      };
+
+      function attachHoverPreviews() {
+        const results = document.querySelectorAll('.result-item');
+        const previewBox = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+        const previewTitle = document.getElementById('previewTitle');
+
+        results.forEach(item => {
+          item.addEventListener('mousemove', function(e) {
+            const title = this.querySelector('.result-link').innerText.toLowerCase();
+            let matchedKey = Object.keys(previewAssets).find(key => title.includes(key));
+
+            if (matchedKey) {
+              previewImg.src = previewAssets[matchedKey];
+              previewTitle.innerText = this.querySelector('.result-link').innerText;
+              
+              previewBox.style.display = 'block';
+              previewBox.style.left = (e.clientX + 20) + 'px';
+              previewBox.style.top = (e.clientY + 20) + 'px';
+            }
+          });
+
+          item.addEventListener('mouseleave', function() {
+            previewBox.style.display = 'none';
+          });
+        });
+      }
+
+      // Hook into rendering
+      const originalRenderWithPreviews = renderFilteredCards;
+      renderFilteredCards = function(matches) {
+        originalRenderWithPreviews(matches);
+        attachHoverPreviews();
+      };
+
+      // ]]>
+    </script>
+    <style>
+      .system-tools {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 15px;
+        background: rgba(242, 242, 242, 0.9);
+        border-top: 1px solid #dadce0;
+        font-size: 13px;
+        color: #70757a;
+      }
+      .tool-item {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: 0.3s;
+      }
+      .tool-item:hover { color: #202124; }
+      
+      /* SafeSearch Toggle Switch */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+      }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 12px; width: 12px;
+        left: 4px; bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+      }
+      input:checked + .slider { background-color: #34a853; }
+      input:checked + .slider:before { transform: translateX(14px); }
+
+      body.dark-theme .system-tools {
+        background: #202124;
+        border-color: #3c4043;
+        color: #9aa0a6;
+      }
+    </style>
+
+    <div class='system-tools' id='footerTools'>
+      <div class='tool-item' onclick='window.open("/feeds/posts/default", "_blank")'>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        RSS Feed
+      </div>
+      <div class='tool-item' onclick='window.open("/sitemap.xml", "_blank")'>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
+        Sitemap
+      </div>
+      <div class='tool-item' style='border-left: 1px solid #dadce0; padding-left: 20px;'>
+        <span>SafeSearch</span>
+        <label class="switch">
+          <input type="checkbox" id="safeSearchToggle" checked="checked" onchange="toggleSafeSearch()"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+      // <![CDATA[
+      
+      /* FUNCTION: Toggle SafeSearch
+         Filters out sensitive keywords from results if active
+      */
+      function toggleSafeSearch() {
+        const isActive = document.getElementById('safeSearchToggle').checked;
+        const msg = isActive ? "SafeSearch is now ON" : "SafeSearch is now OFF";
+        
+        // Show a brief toast notification
+        const toast = document.createElement('div');
+        toast.style = "position:fixed; bottom:100px; left:50%; transform:translateX(-50%); background:#323232; color:#fff; padding:10px 20px; border-radius:4px; font-size:14px; z-index:5000;";
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => toast.remove(), 2000);
+        
+        // In a real IT project, this state would filter the 'engineDatabase'
+        localStorage.setItem('netquest_safesearch', isActive);
+      }
+
+      // Check for Pune location and add a "Map View" icon if query matches
+      const originalPerformMatchWithPune = performMatch;
+      performMatch = function(query) {
+        originalPerformMatchWithPune(query);
+        if (query.includes("pune")) {
+          searchStats.innerHTML += ' • <span style="color:#4285f4; cursor:pointer;" onclick="window.open(\'https://www.google.com/maps/search/Pune+IT+Companies\')">📍 View Pune IT Hubs on Map</span>';
+        }
+      };
+
+      // ]]>
+    </script>
+    <meta name="author" content="B.Tech Electronics &amp; Telecommunication Graduate"/>
+  <meta name="keywords" content="Data Science, Pune IT Jobs, Electronics Projects, Portfolio, Search Engine UI"/>
+  
+  <style>
+    .dev-modal {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      z-index: 9999;
+      max-width: 500px;
+      width: 90%;
+      display: none;
+      animation: cardPop 0.4s ease;
+    }
+    .dev-modal h2 { color: #4285f4; margin-bottom: 10px; }
+    .overlay-blur {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      z-index: 9998;
+      display: none;
+    }
+    body.dark-theme .dev-modal { background: #202124; color: #fff; }
+  </style>
+
+  <div class='overlay-blur' id='modalBlur' onclick='toggleDevModal()'></div>
+  <div class='dev-modal' id='devModal'>
+    <h2>About the Developer</h2>
+    <p style='line-height:1.6;'>
+      Qualified <b>B.Tech in Electronics and Telecommunication</b> professional seeking a <b>Fresher</b> role in the <b>IT domain</b>. 
+      Experienced in <b>Data Analysis</b> and <b>Software Development</b> with a proven track record of <b>2 Data Science internships</b>.
+    </p>
+    <div style='margin-top:20px; padding:15px; background:#f8f9fa; border-radius:10px; color:#333;'>
+      <b>Location:</b> Pune, Maharashtra<br/>
+      <b>Specialties:</b> Python, Data Science, Video Editing (Jay Bhavani Caterers, Shrinath Rasvanti Gruh)
+    </div>
+    <button onclick='toggleDevModal()' style='margin-top:20px; width:100%; padding:10px; border-radius:50px; border:none; background:#4285f4; color:white; cursor:pointer; font-weight:bold;'>Close</button>
+  </div>
+	</div>
+        </footer>
+  <script type='text/javascript'>
+    // <![CDATA[
+    function toggleDevModal() {
+      const modal = document.getElementById('devModal');
+      const blur = document.getElementById('modalBlur');
+      const isVisible = modal.style.display === 'block';
+      modal.style.display = isVisible ? 'none' : 'block';
+      blur.style.display = isVisible ? 'none' : 'block';
+    }
+
+    // Set '?' key to also show developer profile
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'd' || e.key === 'D') {
+        toggleDevModal();
+      }
+    });
+
+    console.log("NetQuest Engine: Final Part 20 Loaded. Template Ready.");
+    // ]]>
+  </script>
+
+  </b:includable>
+    </b:widget>
+  </b:section>
+
+</body>
+</html>
