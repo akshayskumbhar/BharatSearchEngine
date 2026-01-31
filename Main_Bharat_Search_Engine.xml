@@ -384,12 +384,12 @@
   <div class='search-wrapper' id='mainTerminal'>
     
     <div class='brand-logo' id='logoContainer' onclick='resetSearch()'>
-      <span class='char-1'>N</span>
-      <span class='char-2'>e</span>
-      <span class='char-3'>t</span>
-      <span class='char-4'>Q</span>
-      <span class='char-5'>u</span>
-      <span class='char-6'>e</span>
+      <span class='char-1'>B</span>
+      <span class='char-2'>H</span>
+      <span class='char-3'>A</span>
+      <span class='char-4'>R</span>
+      <span class='char-5'>A</span>
+      <span class='char-6'>T</span>
     </div>
 
     <div class='search-bar-outer'>
