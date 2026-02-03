@@ -983,16 +983,16 @@
       */
       const mediaProjects = [
         {
-          title: "Jay Bhavani Caterers Promo",
+          title: "here us title",
           thumbColor: "#ea4335",
           link: "#",
-          category: "caterers"
+          category: "cat"
         },
         {
-          title: "Shrinath Rasvanti Gruh Video",
+          title: "Here is title",
           thumbColor: "#fbbc05",
           link: "#",
-          category: "rasvanti"
+          category: "here is cat"
         }
       ];
 
